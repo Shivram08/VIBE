@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+vibe_env/
+
+# Data (too large for Git)
+data/coco_val2017/
+
+# Model weights (too large for Git — use HuggingFace Hub or Kaggle outputs)
+checkpoints/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env
+wandb/
+
+# OS
+.DS_Store
+Thumbs.db

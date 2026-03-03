@@ -14,8 +14,9 @@ from model import VIBEModel
 from evaluate import recall_at_k
 
 
-def train():
-    cfg    = Config()
+def train(cfg=None):
+    if cfg is None:
+        cfg = Config()
     device = cfg.device
     Path(cfg.ckpt_dir).mkdir(exist_ok=True)
 
@@ -88,8 +89,13 @@ def train():
             # Save best model
             if r1 > best_recall:
                 best_recall = r1
-                torch.save(model.state_dict(),
-                           Path(cfg.ckpt_dir) / "best_model.pt")
+                lean_ckpt = {
+                    "ebm"      : model.ebm.state_dict(),
+                    "img_proj" : model.img_proj.state_dict(),
+                    "txt_proj" : model.txt_proj.state_dict(),
+                    "metrics"  : {"R@1": r1, "R@5": r5, "R@10": r10}
+                }
+                torch.save(lean_ckpt, Path(cfg.ckpt_dir) / "vibe_lean.pt")
                 print(f"  ✓ Best model saved (R@1={r1:.3f})")
 
     wandb.finish()

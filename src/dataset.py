@@ -23,7 +23,7 @@ def load_coco_index(ann_path: str | Path) -> dict:
     for img_id, file_name in id_to_file.items():
         index[img_id] = {
             "file_name"  : file_name,
-            "image_path" : img_dir / file_name,
+            "image_path" : (img_dir / file_name).resolve(),
             "captions"   : id_to_captions[img_id]
         }
     return index

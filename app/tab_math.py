@@ -76,7 +76,7 @@ def render(model):
 
         if use_sample or not upload:
             import random
-            random.seed(42)
+            random.seed(41)
             sample_paths = random.sample(
                 list(Path("data/coco_val2017/images").glob("*.jpg")), 6)
             sample_idx = st.select_slider(

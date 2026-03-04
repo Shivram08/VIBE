@@ -20,3 +20,13 @@ wandb/
 # OS
 .DS_Store
 Thumbs.db
+
+# Large data files
+*.jpg
+*.jpeg
+*.png
+*.json
+*.pt
+*.zip
+deploy_check/
+wandb/

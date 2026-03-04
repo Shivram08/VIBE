@@ -2,7 +2,7 @@
 
 A multimodal AI system that scores image-text alignment using **Energy-Based Models** and **Langevin MCMC dynamics**, built on a frozen CLIP ViT-B/32 backbone trained with InfoNCE contrastive loss on MS-COCO.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://n7fxawrsbnpzxoxpfwqpwk.streamlit.app/)
 
 ---
 
@@ -16,6 +16,29 @@ A multimodal AI system that scores image-text alignment using **Energy-Based Mod
 | Energy Gap | 9.77 |
 
 ---
+
+## 🖼 Visualizations
+
+### Energy Distribution — Matched vs Unmatched Pairs
+![Energy Analysis](assets/energy_analysis.png)
+> Matched pairs (green) cluster at energy ≈ −9.77, unmatched pairs (red) at ≈ +0.11. The sharp separation confirms the model has learned a meaningful energy landscape.
+
+### ViT Attention Rollout — What the Model Focuses On
+![Attention Maps](assets/attention_maps.png)
+> Attention rollout across 6 validation images. The model correctly focuses on the primary subject in each scene.
+
+### Langevin MCMC Trajectory
+![MCMC Trajectory](assets/mcmc_trajectory.png)
+> Starting from random noise in embedding space, Langevin dynamics walks toward low-energy (aligned) regions. The arc shape is characteristic of sampling on a hypersphere.
+
+### UMAP Embedding Space
+![UMAP Embeddings](assets/umap_embeddings.png)
+> Image (blue) and text (red) embeddings occupy the same semantic regions — matched pairs land close together. The right plot colors image embeddings by alignment score with their matched caption.
+
+### Failure Cases
+![Failure Cases](assets/failure_cases.png)
+> Top-8 hardest retrievals. Failures cluster around black & white images, minimalist scenes, and close-up objects — consistent with known limitations of CLIP's visual features.
+
 
 ## 🏗 Architecture
 

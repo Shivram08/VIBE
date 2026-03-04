@@ -6,7 +6,7 @@ import os
 import sys
 from pathlib import Path
 
-HF_REPO    = "shiv0805/vibe-weights"
+HF_REPO    = "shiv0805/VIBE"
 CACHE_FLAG = Path(".deployment_ready")
 
 

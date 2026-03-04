@@ -1,6 +1,8 @@
 import sys
 sys.path.insert(0, "src")
-
+sys.path.insert(0, ".")
+from setup_deployment import setup
+setup()
 import streamlit as st
 
 st.set_page_config(

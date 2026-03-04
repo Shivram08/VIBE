@@ -99,7 +99,8 @@ def render(model, tokenizer, device, img_embs, txt_embs, index, img_ids):
 
         # Top-5 from COCO pool
         sim      = (img_emb.cpu() @ all_txt_embs.T).squeeze()
-        top5_idx = sim.topk(5).indices.tolist()
+        n_pool   = len(coco_ids)  # use actual pool size, not full 5k
+        top5_idx = sim[:n_pool].topk(min(5, n_pool)).indices.tolist()
         pool_results = []
         for idx in top5_idx:
             cap   = coco_index[coco_ids[idx]]["captions"][0]
